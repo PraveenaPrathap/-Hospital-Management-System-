@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Appointment List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ccc;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .table-container {
+            margin-top: 30px;
+        }
+
+        .table thead {
+            background-color: #236285;
+            color: white;
+        }
+
+        .table td, .table th {
+            text-align: center;
+        }
+
+        .btn-view {
+            background-color: #236285;
+            color: white;
+            border: none;
+        }
+
+        .btn-view:hover {
+            background-color: #1e4e6a;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center">Your Appointment List</h2>
+
+        <!-- Table for displaying appointments -->
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Patient Name</th>
+                        <th>Appointment Date</th>
+                        <th>Time</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="appointmentsList">
+                    <!-- Appointment List will be dynamically populated -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Arogya Hospital private Ltd. All rights reserved.</p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript to handle dynamic table population -->
+    <script>
+        // Sample Data: Array of appointments
+        const appointments = [
+            { id: 1, patientName: 'Praveena Prathap', date: '2025-03-15', time: '10:00 AM', details: 'Pregnancy Checkup' },
+            { id: 2, patientName: 'Hariharan Ruthraram', date: '2025-03-16', time: '11:00 AM', details: 'Dental Consultation' },
+            { id: 3, patientName: 'Narendran Ranjith', date: '2025-03-17', time: '12:30 PM', details: 'Cardiology Checkup' },
+            { id: 4, patientName: 'Archana Krishnathas', date: '2025-03-18', time: '02:00 PM', details: 'Eye Exam' },
+            { id: 5, patientName: 'Pavithra Danulaxshan', date: '2025-03-19', time: '03:30 PM', details: 'Physiotherapy' },
+            { id: 6, patientName: 'Esan Jenothan', date: '2025-03-18', time: '02:00 PM', details: 'Eye Exam' },
+            { id: 7, patientName: 'Reginod Nesathas Alestra Dilakshana', date: '2025-03-19', time: '03:30 PM', details: 'Physiotherapy' }
+        ];
+
+        // Function to display appointments in the table
+        function displayAppointments() {
+            const appointmentsList = document.getElementById('appointmentsList');
+            appointmentsList.innerHTML = ''; // Clear the existing table content
+
+            // Loop through each appointment and create a table row
+            appointments.forEach(appointment => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${appointment.id}</td>
+                    <td>${appointment.patientName}</td>
+                    <td>${appointment.date}</td>
+                    <td>${appointment.time}</td>
+                    <td><button class="btn btn-view" onclick="viewDetails(${appointment.id})">View</button></td>
+                `;
+
+                appointmentsList.appendChild(row);
+            });
+        }
+
+        // Function to display details of the selected appointment
+        function viewDetails(appointmentId) {
+            const appointment = appointments.find(app => app.id === appointmentId);
+            if (appointment) {
+                alert(`
+                    Appointment Details:
+                    Patient: ${appointment.patientName}
+                    Date: ${appointment.date}
+                    Time: ${appointment.time}
+                    Details: ${appointment.details}
+                `);
+            }
+        }
+
+        // Call the displayAppointments function when the page loads
+        window.onload = displayAppointments;
+    </script>
+</body>
+
+</html>

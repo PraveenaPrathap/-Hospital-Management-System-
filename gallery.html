@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Gallery</title>
+    <link rel="stylesheet" href="galStyle.css">
+</head>
+<body>
+    <h2 class="gallery-title">Hospital Gallery</h2>
+    <div class="gallery-container">
+        <div class="gallery-item" onclick="openLightbox('Gimg1.jpg')">
+            <img src="Gimg1.jpg" alt="Hospital Image 1">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg2.jpg')">
+            <img src="Gimg2.jpg" alt="Hospital Image 2">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg3.png')">
+            <img src="Gimg3.png" alt="Hospital Image 3">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg4.jpg')">
+            <img src="Gimg4.jpg" alt="Hospital Image 4">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg5.jpeg')">
+            <img src="Gimg5.jpeg" alt="Hospital Image 5">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg6.jpeg')">
+            <img src="Gimg6.jpeg" alt="Hospital Image 6">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg7.webp')">
+            <img src="Gimg7.webp" alt="Hospital Image 7">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg8.jpg')">
+            <img src="Gimg8.jpg" alt="Hospital Image 8">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg9.jpg')">
+            <img src="Gimg9.jpg" alt="Hospital Image 9">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg10.webp')">
+            <img src="Gimg10.webp" alt="Hospital Image 10">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg11.jpg')">
+            <img src="Gimg11.jpg" alt="Hospital Image 11">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('Gimg12.jpg')">
+            <img src="Gimg12.jpg" alt="Hospital Image 12">
+        </div>
+        </div>
+    </div>
+    
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged Image">
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

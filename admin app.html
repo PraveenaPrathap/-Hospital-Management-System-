@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arogya Hospital Admin Panel</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ccc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #236285;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            margin-top: 40px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container h3 {
+            font-size: 28px;
+            color: #236285;
+            margin-bottom: 20px;
+        }
+
+        .card-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Ensures space between cards */
+        }
+
+        .card-table {
+            flex: 1 1 30%; /* Ensures each card takes up 30% of the container */
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card-table:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .table td, .table th {
+            text-align: center;
+            padding: 12px;
+        }
+
+        .table td {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn-edit, .btn-delete {
+            background-color: #236285;
+            color: white;
+            border-radius: 5px;
+            padding: 8px 15px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-edit:hover, .btn-delete:hover {
+            background-color: #1e4e6a;
+            cursor: pointer;
+        }
+
+        .btn-edit:focus, .btn-delete:focus {
+            outline: none;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .title-name{
+            background-color: #ccc;
+            width: 100%;
+            height: 100px;
+        }
+        .title-name { 
+            display: flex;
+            position: relative;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%; /* Full width */
+            background: rgb(10, 31, 61);
+            padding: 30px;
+            border-radius: 0; /* Remove border-radius for full width */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            justify-content: space-between;
+        }
+        h1{
+            color: white;
+        }
+        .logo{
+            background-color: white;
+            width: 150px;
+            height: 100px;
+            top: 0;
+            border-radius: 10px;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title-name">
+        <h1>Arogya Hospital Admin Panel</h1>
+        <img src="logo.png" alt="AROGYA Hospital Logo" class="logo">
+        </div>
+    <div class="container">
+        
+        <div class="table-container">
+            <h3>Doctor's Appointments</h3>
+            <div id="doctorAppointmentsList" class="card-columns">
+                <!-- Doctor's appointments will be dynamically populated here -->
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h3>Patient's Appointments</h3>
+            <div id="patientAppointmentsList" class="card-columns">
+                <!-- Patient's appointments will be dynamically populated here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Arogya Hospital. All rights reserved.</p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript to handle dynamic content and actions -->
+    <script>
+        // Sample Data: Doctor and Patient Appointments
+        const doctorAppointments = [
+            { id: 1, patientName: 'John Doe', doctorName: 'Dr. Smith', date: '2025-03-15', time: '10:00 AM' },
+            { id: 2, patientName: 'Jane Smith', doctorName: 'Dr. Lee', date: '2025-03-16', time: '11:00 AM' },
+            { id: 3, patientName: 'Alice Brown', doctorName: 'Dr. Patel', date: '2025-03-17', time: '12:30 PM' }
+        ];
+
+        const patientAppointments = [
+            { id: 1, doctorName: 'Dr. Smith', patientName: 'John Doe', date: '2025-03-15', time: '10:00 AM' },
+            { id: 2, doctorName: 'Dr. Lee', patientName: 'Jane Smith', date: '2025-03-16', time: '11:00 AM' },
+            { id: 3, doctorName: 'Dr. Patel', patientName: 'Alice Brown', date: '2025-03-17', time: '12:30 PM' }
+        ];
+
+        // Function to display appointments
+        function displayAppointments() {
+            const doctorList = document.getElementById('doctorAppointmentsList');
+            const patientList = document.getElementById('patientAppointmentsList');
+
+            doctorList.innerHTML = '';
+            patientList.innerHTML = '';
+
+            // Doctor Appointments Card Style
+            doctorAppointments.forEach(app => {
+                const card = document.createElement('div');
+                card.classList.add('card-table');
+                card.innerHTML = `
+                    <h5 class="card-title">${app.patientName} - ${app.doctorName}</h5>
+                    <p class="card-text">Date: ${app.date}</p>
+                    <p class="card-text">Time: ${app.time}</p>
+                    <button class="btn-edit" onclick="editAppointment('doctor', ${app.id})">Edit</button>
+                    <button class="btn-delete" onclick="deleteAppointment('doctor', ${app.id})">Delete</button>
+                `;
+                doctorList.appendChild(card);
+            });
+
+            // Patient Appointments Card Style
+            patientAppointments.forEach(app => {
+                const card = document.createElement('div');
+                card.classList.add('card-table');
+                card.innerHTML = `
+                    <h5 class="card-title">${app.patientName} - ${app.doctorName}</h5>
+                    <p class="card-text">Date: ${app.date}</p>
+                    <p class="card-text">Time: ${app.time}</p>
+                    <button class="btn-edit" onclick="editAppointment('patient', ${app.id})">Edit</button>
+                    <button class="btn-delete" onclick="deleteAppointment('patient', ${app.id})">Delete</button>
+                `;
+                patientList.appendChild(card);
+            });
+        }
+
+        // Function to edit appointments (for both doctor and patient)
+        function editAppointment(type, id) {
+            const appointments = type === 'doctor' ? doctorAppointments : patientAppointments;
+            const appointment = appointments.find(app => app.id === id);
+            if (appointment) {
+                const newDate = prompt('Enter new appointment date:', appointment.date);
+                const newTime = prompt('Enter new appointment time:', appointment.time);
+
+                if (newDate && newTime) {
+                    appointment.date = newDate;
+                    appointment.time = newTime;
+                    displayAppointments();
+                }
+            }
+        }
+
+        // Function to delete appointments
+        function deleteAppointment(type, id) {
+            const appointments = type === 'doctor' ? doctorAppointments : patientAppointments;
+            const index = appointments.findIndex(app => app.id === id);
+            if (index !== -1) {
+                appointments.splice(index, 1);
+                displayAppointments();
+            }
+        }
+
+        // Call displayAppointments function when the page loads
+        window.onload = displayAppointments;
+    </script>
+</body>
+
+</html>

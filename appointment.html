@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking - Arogya Hospital</title>
+    <link rel="stylesheet" href="appstyle.css">
+</head>
+<body>
+    <div class="cont-head">
+        <img src="logo.png" alt="AROGYA Hospital Logo" class="logo">
+        <h1 class="a-title">Arogya Hospital</h1>
+    </div>
+    <div class="container">
+        <h2>Book an Appointment</h2>
+        <form id="appointmentForm">
+            <label for="name">Patient Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="date">Appointment Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="doctor">Select Doctor:</label>
+            <select id="doctor" required>
+                <option value="">-- Select --</option>
+                <option value="Dr. Kumar">Dr. Kumar (Cardiologist)</option>
+                <option value="Dr. Priya">Dr. Priya (Dermatologist)</option>
+                <option value="Dr. Arjun">Dr. Arjun (General Physician)</option>
+            </select>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+
+        <div id="confirmation"></div>
+    </div>
+
+    <script>
+        document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from actually submitting
+            
+            // Get form values
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const date = document.getElementById("date").value;
+            const doctor = document.getElementById("doctor").value;
+
+            // Form validation
+            if (!name || !email || !phone || !date || !doctor) {
+                alert("Please fill in all the fields!");
+                return;
+            }
+
+            // Redirect to confirmation page with form data in URL
+            window.location.href = `appointment confirmation.html?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&date=${encodeURIComponent(date)}&doctor=${encodeURIComponent(doctor)}`;
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h1{
+    color: white;
+}
+img{
+    background-color: white;
+    border-radius:50%;
+    
+}
+.cont-head { 
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38.85cm; /* Full width */
+    background: rgb(10, 31, 61);
+    padding: 30px;
+    border-radius: 0; /* Remove border-radius for full width */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px; /* Adds gap between .cont-head and .container */
+}
+
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    grid-column: span 2; /* Button spans both columns */
+    background: rgb(10, 31, 61);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+button:hover {
+    background: rgb(50, 94, 159);
+}
+
+#confirmation {
+    grid-column: span 2;
+    text-align: center;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 20px;
+}

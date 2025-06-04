@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AROGYA Hospital</title> 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Bar Styling */
+        .navbar {
+            background-color: #f8f9fa; /* Light Gray Background */
+            border-bottom: 3px solid #236285; /* Blue Border */
+        }
+        .navbar-brand img {
+            height: 80px; /* Adjusted Logo Size */
+        }
+        .nav-link {
+            color: #236285 !important; /* Blue Link Color */
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            padding: 8px 15px;
+        }
+        .nav-link:hover {
+            color: white !important;
+            background-color: #236285;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Background Section Styling */
+        .background-section {
+            background-image: url('background7.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Text Content Styling */
+        .text-content {
+            position: absolute;
+            top: 40%;
+            left: 2%;
+            transform: translateY(-50%);
+            text-align: left;
+            color: #1a1a1a;
+            max-width: 45%;
+            background: rgba(255, 255, 255, 0.8); /* Lighter Semi-Transparent Background */
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .text-content:hover {
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .text-content h2 {
+            font-size: 55px;
+            font-weight: 700;
+            color: #236285;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .text-content p {
+            font-size: 22px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #545454;
+            font-family: 'Arial', sans-serif;
+            font-weight: 600;
+        }
+
+        .text-content p:last-child {
+            font-weight: 600;
+            color: #545454;
+        }
+
+        /* Box below Text Content (Smaller Version) */
+        .appointment-box {
+            position: absolute;
+            top: 65%;
+            left: 24%;
+            transform: translateX(-50%);
+            background: #236285;
+            padding: 20px;
+            width: 30%;
+            border-radius: 12px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .appointment-box h4 {
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        /* Book Appointment Button Styling */
+        .btn-appointment {
+            font-size: 18px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            background-color: #fff;
+            color: #236285;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px #236285, 0 0 20px #236285, 0 0 30px #236285;
+        }
+
+        .btn-appointment:hover {
+            background-color: #1d4f6c;
+            color: white;
+            box-shadow: 0 0 15px #236285, 0 0 25px #236285, 0 0 35px #236285;
+            transform: scale(1.1);
+        }
+
+        .btn-appointment i {
+            margin-right: 8px;
+        }
+
+        /* Services Section Styling */
+        .services-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+
+        .services-title {
+            text-align: center;
+            font-size: 40px;
+            color: #236285;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card-body {
+            padding: 20px;
+        }
+
+        .service-card-body h5 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #236285;
+            margin-bottom: 15px;
+        }
+
+        .service-card-body p {
+            font-size: 18px;
+            color: #545454;
+        }
+
+        /* Service Icon Styling */
+        .service-icon {
+            font-size: 50px;
+            color: #236285;
+            margin-bottom: 15px;
+        }
+
+     /* Feedback Section Styling */
+     .feedback-section {
+        background: linear-gradient(to right, #2b4779, #2b4779);
+        color: #fff;
+        padding: 80px 0;
+        margin-top: 50px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-heading {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .feedback-section p {
+        font-size: 18px;
+        margin-bottom: 40px;
+        font-style: italic;
+        color: #ddd;
+    }
+
+    /* Form Styling */
+    .feedback-form {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        padding: 30px;
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .form-label{
+        color: black;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 15px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: #2b4779;
+        box-shadow: 0 0 5px rgba(48, 89, 159, 0.6);
+    }
+
+    .btn-submit {
+        background-color: #2b4779;
+        color: white;
+        font-size: 18px;
+        padding: 14px 35px;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .btn-submit:hover {
+        background-color: #2b4779;
+        cursor: pointer;
+    }
+
+    .btn-submit.submitted {
+        background-color: #236285; /* Green color when feedback is submitted */
+    }
+
+    /* Contact Us Section Styling */
+/* Contact Us Section Styling */
+/* Contact Us Section Styling */
+/* Contact Us Section Styling */
+/* Contact Us Section Styling */
+.contact-us {
+    background-color: #9fccf3; /* Darker Ash background color */
+    padding: 50px 0;
+}
+
+.contact-us .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-us .contact-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.contact-us .logo img {
+    max-width: 300px; /* Increased logo width */
+    height: auto;
+}
+
+.contact-us .contact-description {
+    max-width: 700px;
+}
+
+.contact-us .section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #236285;
+    margin-bottom: 10px;
+}
+
+.contact-us .contact-description p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.contact-us .contact-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact-us .contact-item {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.contact-us .contact-item:hover {
+    transform: scale(1.05);
+}
+
+.contact-us .contact-item i {
+    font-size: 30px;
+    color: #236285;
+    margin-bottom: 10px;
+}
+
+.contact-us .contact-item p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.contact-us .contact-item a {
+    color: #236285;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-us .contact-item a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+        /* Responsive Design for Services */
+        @media (max-width: 768px) {
+            .service-card {
+                margin: 15px;
+            }
+
+            .service-card img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="AROGYA Hospital Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#background-section">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin-login.html">Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctor-login.html">Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services-section">Services</a></li> <!-- Updated Link -->
+                    <li class="nav-item"><a class="nav-link" href="#contact-info">Contact Us</a></li>
+                    <li class="nav-item ms-3 dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="patient-login.html">Patient</a></li>
+                            <li><a class="dropdown-item" href="doctor-login.html">Doctor</a></li>
+                            <li><a class="dropdown-item" href="admin-login.html">Admin</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Background Section with Updated Text and Appointment Box -->
+    <div class="background-section" id="background-section">
+        <div class="text-content">
+            <h2>Welcome to AROGYA Hospital</h2>
+            <p>Your trusted partner in health and wellness.</p>
+            <p>We are committed to providing the best medical care with compassion and professionalism.</p>
+        </div>
+        <div class="appointment-box">
+            <h4>Ready to book your appointment?</h4>
+            <a href="patient-login.html" class="btn-appointment">
+                <i class="bi bi-calendar-plus"></i> Book Appointment
+            </a>
+        </div>
+    </div> 
+
+    <!-- Services Section -->
+    <div class="services-section" id="services-section"> <!-- Added ID here -->
+        <div class="container">
+            <h2 class="services-title">Our Services</h2>
+            <div class="row">
+                <!-- Service Card 1: General Checkup -->
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-card-body text-center">
+                            <i class="bi bi-clipboard-check service-icon"></i>
+                            <h5>General Checkup</h5>
+                            <p>We offer comprehensive health checkups to ensure you're in the best of health.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Card 2: Specialist Consultations -->
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-card-body text-center">
+                            <i class="bi bi-person service-icon"></i>
+                            <h5>Specialist Consultations</h5>
+                            <p>Consult with our experienced specialists for expert medical advice.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Card 3: 24/7 Emergency Care -->
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-card-body text-center">
+                            <i class="bi bi-clock service-icon"></i>
+                            <h5>24/7 Emergency Care</h5>
+                            <p>Quick and effective emergency care, available round the clock.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <!-- feedback-section -->
+ <div class="feedback-section" id="feedback-section">
+    <div class="container text-center">
+        <h2 class="section-heading">We Value Your Feedback</h2>
+        <p>Your feedback helps us improve our services. Please share your thoughts below:</p>
+        
+        <!-- Feedback Form -->
+        <div class="feedback-form">
+            <form id="feedbackForm" onsubmit="return submitFeedback(event)">
+                <div class="mb-4">
+                    <label for="name" class="form-label" >Your Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label">Your Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-4">
+                    <label for="feedback" class="form-label">Your Feedback</label>
+                    <textarea class="form-control" id="feedback" rows="6" placeholder="Enter your feedback" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit" id="submitButton">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Us Section -->
+<!-- Contact Us Section -->
+<div class="contact-us" id="contact-us">
+    <div class="container">
+        <div class="contact-header">
+            <!-- Hospital Logo -->
+            <div class="logo">
+                <img src="logo.png" alt="Hospital Logo" />
+            </div>
+            <!-- Description -->
+            <div class="contact-description">
+                <h2 class="section-title">Contact Us</h2>
+                <p>We are here to assist you with all your medical needs. Reach out to us through any of the below methods.</p>
+            </div>
+        </div>
+        <!-- Contact Information -->
+        <div class="contact-info" id="contact-info">
+            <div class="contact-item">
+                <i class="bi bi-phone"></i>
+                <p><strong>Phone:</strong> +94 123 456 789</p>
+            </div>
+            <div class="contact-item">
+                <i class="bi bi-facebook"></i>
+                <p><strong>Facebook:</strong> <a href="https://facebook.com/arogyahospital" target="_blank">AROGYA Hospital</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="bi bi-instagram"></i>
+                <p><strong>Instagram:</strong> <a href="https://instagram.com/arogyahospital" target="_blank">@arogyahospital</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="bi bi-envelope"></i>
+                <p><strong>Email:</strong> info@arogyahospital.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="bi bi-geo-alt"></i>
+                <p><strong>Address:</strong> 123 Health Street, Colombo, Sri Lanka</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="feedback.js"></script>
+     <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.main-home {
+    padding: 20px;
+}
+
+.home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-left-content {
+    max-width: 50%;
+}
+
+.home-left-content span {
+    font-size: 20px;
+    color: #236285;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.home-left-content h2 {
+    font-size: 36px;
+    color: #333;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.home-left-content p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.home-right-content img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Button container */
+.navigation-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+/* Button Style */
+.nav-btn {
+    padding: 20px 40px; /* Bigger buttons */
+    background-color: #236285; /* Main button color */
+    color: white; /* Button text color */
+    font-size: 18px; /* Bigger font size */
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #236285; /* Border with main color */
+    border-radius: 8px; /* Rounded corners */
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    animation: slideIn 0.8s ease-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow */
+}
+
+/* Hover effect */
+.nav-btn:hover {
+    background-color: white; /* Invert background on hover */
+    color: #236285; /* Main color for text on hover */
+    transform: scale(1.1); /* Slightly larger on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increase shadow */
+}
+
+/* Animation for button appearance */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
